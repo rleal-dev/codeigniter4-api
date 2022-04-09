@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateUsersTable extends Migration
+class CreatePermissionRoleTable extends Migration
 {
     public function up()
     {
@@ -14,18 +14,13 @@ class CreateUsersTable extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'name' => [
-                'type' => 'VARCHAR',
-                'constraint' => '150',
+            'role_id' => [
+                'type' => 'BIGINT',
+                'unsigned' => true,
             ],
-            'email' => [
-                'type' => 'VARCHAR',
-                'constraint' => '150',
-                'unique' => true,
-            ],
-            'password' => [
-                'type' => 'VARCHAR',
-                'constraint' => '255',
+            'permission_id' => [
+                'type' => 'BIGINT',
+                'unsigned' => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -33,18 +28,16 @@ class CreateUsersTable extends Migration
             'updated_at' => [
                 'type' => 'DATETIME',
             ],
-            'deleted_at' => [
-                'type' => 'DATETIME',
-                'null' => true,
-            ],
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('users');
+        $this->forge->addForeignKey('role_id', 'roles', 'id');
+        $this->forge->addForeignKey('permission_id', 'permissions', 'id');
+        $this->forge->createTable('permission_role');
     }
 
     public function down()
     {
-        $this->forge->dropTable('users');
+        $this->forge->dropTable('permission_role');
     }
 }
