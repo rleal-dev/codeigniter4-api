@@ -30,7 +30,7 @@ class CreateRoleUserTable extends Migration
             ],
         ]);
 
-        $this->forge->addKey('id', true);
+        $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('user_id', 'users', 'id');
         $this->forge->addForeignKey('role_id', 'roles', 'id');
         $this->forge->createTable('role_user');

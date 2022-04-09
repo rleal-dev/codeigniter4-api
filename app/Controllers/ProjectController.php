@@ -2,22 +2,22 @@
 
 namespace App\Controllers;
 
-use App\Services\UserService;
+use App\Services\ProjectService;
 use CodeIgniter\RESTful\ResourceController;
 
-class UserController extends ResourceController
+class ProjectController extends ResourceController
 {
     /**
-     * @var UserService
+     * @var ProjectService
      */
-    private UserService $userService;
+    private ProjectService $projectService;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->userService = new UserService;
+        $this->projectService = new ProjectService;
     }
 
     public function index()

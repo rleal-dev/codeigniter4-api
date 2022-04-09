@@ -30,7 +30,7 @@ class CreatePermissionRoleTable extends Migration
             ],
         ]);
 
-        $this->forge->addKey('id', true);
+        $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('role_id', 'roles', 'id');
         $this->forge->addForeignKey('permission_id', 'permissions', 'id');
         $this->forge->createTable('permission_role');

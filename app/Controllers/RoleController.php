@@ -2,22 +2,22 @@
 
 namespace App\Controllers;
 
-use App\Services\UserService;
+use App\Services\RoleService;
 use CodeIgniter\RESTful\ResourceController;
 
-class UserController extends ResourceController
+class RoleController extends ResourceController
 {
     /**
-     * @var UserService
+     * @var RoleService
      */
-    private UserService $userService;
+    private RoleService $roleService;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->userService = new UserService;
+        $this->roleService = new RoleService;
     }
 
     public function index()

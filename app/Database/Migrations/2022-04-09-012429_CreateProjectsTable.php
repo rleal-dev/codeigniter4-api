@@ -38,7 +38,7 @@ class CreateProjectsTable extends Migration
             ],
         ]);
 
-        $this->forge->addKey('id', true);
+        $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('user_id', 'roles', 'id');
         $this->forge->createTable('projects');
     }

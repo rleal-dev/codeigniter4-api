@@ -2,22 +2,22 @@
 
 namespace App\Controllers;
 
-use App\Services\UserService;
+use App\Services\PermissionService;
 use CodeIgniter\RESTful\ResourceController;
 
-class UserController extends ResourceController
+class PermissionController extends ResourceController
 {
     /**
-     * @var UserService
+     * @var PermissionService
      */
-    private UserService $userService;
+    private PermissionService $permissionService;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->userService = new UserService;
+        $this->permissionService = new PermissionService;
     }
 
     public function index()

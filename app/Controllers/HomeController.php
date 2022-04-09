@@ -2,11 +2,13 @@
 
 namespace App\Controllers;
 
-class HomeController extends BaseController
+use CodeIgniter\RESTful\ResourceController;
+
+class HomeController extends ResourceController
 {
     public function index()
     {
-        return $this->response->setJSON([
+        return $this->respond([
             'message' => 'Codeigniter 4 - Rest Api',
         ]);
     }
