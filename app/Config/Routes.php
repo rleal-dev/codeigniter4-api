@@ -35,7 +35,7 @@ $routes->get('/', 'HomeController::index');
 $routes->post('login', 'Auth/LoginController::login');
 $routes->post('register', 'Auth/RegisterController::register');
 
-$routes->presenter('users', ['controller' => 'UserController']);
+$routes->resource('users', ['controller' => 'UserController', 'filter' => 'authFilter']);
 
 /*
  * --------------------------------------------------------------------

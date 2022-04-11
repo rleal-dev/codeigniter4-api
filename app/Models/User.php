@@ -28,7 +28,7 @@ class User extends Model
      *
      * @var bool
      */
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
 
     /**
      * An array of field names that are allowed
