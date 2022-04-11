@@ -41,4 +41,27 @@ class User extends Model
         'email',
         'password',
     ];
+
+    /**
+     * Callbacks for beforeInsert
+     *
+     * @var array
+     */
+    protected $beforeInsert = ['passwordHash'];
+
+    /**
+     * Callbacks for beforeUpdate
+     *
+     * @var array
+     */
+    protected $beforeUpdate = ['passwordHash'];
+
+    protected function passwordHash(array $data)
+    {
+        if (isset($data['data']['password'])) {
+            $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_BCRYPT);
+        }
+
+        return $data;
+    }
 }

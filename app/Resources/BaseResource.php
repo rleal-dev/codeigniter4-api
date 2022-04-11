@@ -35,7 +35,7 @@ class BaseResource
     private function mergeAttributes()
     {
         $allowedFields = $this->toArray();
-        
+
         $this->clearAttributes();
 
         return $this->initialize($allowedFields);
@@ -43,6 +43,6 @@ class BaseResource
 
     public function toArray()
     {
-       return []; 
+        return [];
     }
 }

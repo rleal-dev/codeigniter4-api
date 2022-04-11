@@ -2,7 +2,7 @@
 
 namespace App\Resources;
 
-class ProfileResource extends BaseResource
+class UserResource extends BaseResource
 {
     public function toArray()
     {

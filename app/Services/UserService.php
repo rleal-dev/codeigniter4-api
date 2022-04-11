@@ -2,24 +2,44 @@
 
 namespace App\Services;
 
-use App\Models\User;
+use App\Repositories\UserRepository;
 
 class UserService
 {
-    private User $userModel;
+    private UserRepository $userRepository;
 
     public function __construct()
     {
-        $this->userModel = new User;
+        $this->userRepository = new UserRepository;
     }
 
     public function getLoggedUser($request)
     {
-        return $this->userModel->where('email', $request->token->email)->first();
+        return $this->userRepository->getLoggedUser($request);
     }
 
     public function findAll()
     {
-        return $this->userModel->paginate(1);
+        return $this->userRepository->findAll();
+    }
+
+    public function findOne($id)
+    {
+        return $this->userRepository->findOne($id);
+    }
+
+    public function create($request)
+    {
+        return $this->userRepository->create($request);
+    }
+
+    public function update($id, $data)
+    {
+        return $this->userRepository->update($id, $data);
+    }
+
+    public function delete($id)
+    {
+        return $this->userRepository->delete($id);
     }
 }

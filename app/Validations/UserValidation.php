@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Validations\Auth;
+namespace App\Validations;
 
-class RegisterValidation
+class UserValidation
 {
     public static function rules()
     {

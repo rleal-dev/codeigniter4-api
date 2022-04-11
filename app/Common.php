@@ -13,3 +13,9 @@
  *
  * @see: https://codeigniter4.github.io/CodeIgniter4/
  */
+if (! function_exists('is_development')) {
+    function is_development()
+    {
+        return getenv('CI_ENVIRONMENT') == 'development';
+    }
+}

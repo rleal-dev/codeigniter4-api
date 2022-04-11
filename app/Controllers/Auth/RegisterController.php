@@ -20,7 +20,7 @@ class RegisterController extends ResourceController
         try {
             (new RegisterService)->register($this->request);
         } catch (Throwable $exception) {
-            if (getenv('CI_ENVIRONMENT') == 'development') {
+            if (is_development()) {
                 throw new $exception;
             }
 
