@@ -2,6 +2,7 @@
 
 namespace App\Filters;
 
+use App\Models\User;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -48,12 +49,16 @@ class AuthFilter implements FilterInterface
         }
 
         try {
-            JWT::decode($token, new Key($key, 'HS256'));
+            $decode = JWT::decode($token, new Key($key, 'HS256'));
+            $user = (new User)->where('email', $decode->email)->first();
+            $request->user = $user;
         } catch (Exception $exception) {
             return Services::response()
                 ->setJSON(['msg' => 'Invalid Token!'])
                 ->setStatusCode(ResponseInterface::HTTP_UNAUTHORIZED);
         }
+
+        return $request;
     }
 
     /**

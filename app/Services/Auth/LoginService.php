@@ -9,6 +9,18 @@ class LoginService
 {
     public function login($request)
     {
+        if (! $this->checkCredentials($request)) {
+            return false;
+        }
+
+        $key = getenv('JWT_SECRET');
+        $payload = $this->getTokenPayload($request);
+
+        return JWT::encode($payload, $key, 'HS256');
+    }
+
+    private function checkCredentials($request)
+    {
         $email = $request->getVar('email');
         $password = $request->getVar('password');
 
@@ -18,25 +30,18 @@ class LoginService
             return false;
         }
 
-        $checkPassword = password_verify($password, $user['password']);
+        return password_verify($password, $user['password']);
+    }
 
-        if (! $checkPassword) {
-            return false;
-        }
-
-        $key = getenv('JWT_SECRET');
-        $iat = time();
-        $exp = $iat + 3600;
-
-        $payload = [
+    private function getTokenPayload($request)
+    {
+        return [
             'iss' => 'Issuer of the JWT',
             'aud' => 'Audience that the JWT',
             'sub' => 'Subject of the JWT',
-            'iat' => $iat,
-            'exp' => $exp,
-            'email' => $user['email'],
+            'iat' => time(),
+            'exp' => time() + 3600,
+            'email' => $request->getVar('email'),
         ];
-
-        return JWT::encode($payload, $key, 'HS256');
     }
 }
