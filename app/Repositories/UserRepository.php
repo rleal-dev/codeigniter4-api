@@ -8,7 +8,7 @@ class UserRepository
 {
     public function __construct(
         private User $userModel = new User,
-        private UserRole $userRoleModel = new UserRole()
+        private UserRole $userRoleModel = new UserRole
     ) {
     }
 
@@ -62,7 +62,7 @@ class UserRepository
         foreach ($roles as $roleId) {
             $this->userRoleModel->save([
                 'user_id' => $userId,
-                'role_id' => $roleId
+                'role_id' => $roleId,
             ]);
         }
     }

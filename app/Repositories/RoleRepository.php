@@ -8,7 +8,7 @@ class RoleRepository
 {
     public function __construct(
         private Role $roleModel = new Role,
-        private RolePermission $rolePermissionModel = new RolePermission()
+        private RolePermission $rolePermissionModel = new RolePermission
     ) {
     }
 
@@ -33,7 +33,6 @@ class RoleRepository
         $db->transCommit();
 
         return $roleId;
-        
     }
 
     public function update($id, $request)
@@ -47,7 +46,6 @@ class RoleRepository
         $db->transCommit();
 
         return $id;
-
     }
 
     public function delete($id)
@@ -64,7 +62,7 @@ class RoleRepository
         foreach ($permissions as $permissionId) {
             $this->rolePermissionModel->save([
                 'role_id' => $roleId,
-                'permission_id' => $permissionId
+                'permission_id' => $permissionId,
             ]);
         }
     }
