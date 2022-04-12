@@ -2,12 +2,12 @@
 
 namespace App\Services\Auth;
 
-use App\Models\User;
+use App\Repositories\UserRepository;
 
 class RegisterService
 {
     public function register($request)
     {
-        return (new User)->save($request->getVar());
+        return (new UserRepository)->create($request->getVar());
     }
 }

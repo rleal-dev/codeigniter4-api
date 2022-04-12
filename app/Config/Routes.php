@@ -42,6 +42,9 @@ $routes->group('', ['filter' => 'authFilter'], function ($routes) {
     $routes->get('profile', 'UserProfileController');
 
     $routes->resource('users', ['controller' => 'UserController']);
+    $routes->resource('roles', ['controller' => 'RoleController']);
+    $routes->resource('permissions', ['controller' => 'PermissionController']);
+    $routes->resource('projects', ['controller' => 'ProjectController']);
 });
 
 /*

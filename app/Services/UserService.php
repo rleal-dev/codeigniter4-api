@@ -6,16 +6,9 @@ use App\Repositories\UserRepository;
 
 class UserService
 {
-    private UserRepository $userRepository;
-
-    public function __construct()
-    {
-        $this->userRepository = new UserRepository;
-    }
-
-    public function getLoggedUser($request)
-    {
-        return $this->userRepository->getLoggedUser($request);
+    public function __construct(
+        private UserRepository $userRepository = new UserRepository
+    ) {
     }
 
     public function findAll()

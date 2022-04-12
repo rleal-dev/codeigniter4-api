@@ -2,14 +2,15 @@
 
 namespace App\Resources;
 
-class UserResource extends BaseResource
+class ProjectResource extends BaseResource
 {
     public function toArray()
     {
         return [
             'id' => $this->id,
+            'user_id' => $this->user_id,
             'name' => $this->name,
-            'email' => $this->email,
+            'description' => $this->description,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

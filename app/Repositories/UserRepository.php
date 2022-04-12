@@ -6,16 +6,9 @@ use App\Models\User;
 
 class UserRepository
 {
-    private User $userModel;
-
-    public function __construct()
-    {
-        $this->userModel = new User;
-    }
-
-    public function getLoggedUser($request)
-    {
-        return $this->userModel->where('email', $request->token->email)->first();
+    public function __construct(
+        private User $userModel = new User
+    ) {
     }
 
     public function findAll()

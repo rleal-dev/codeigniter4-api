@@ -10,17 +10,9 @@ use Throwable;
 
 class UserController extends ResourceController
 {
-    /**
-     * @var UserService
-     */
-    private UserService $userService;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->userService = new UserService;
+    public function __construct(
+        private UserService $userService = new UserService
+    ) {
     }
 
     public function index()

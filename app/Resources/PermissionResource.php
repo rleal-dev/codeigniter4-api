@@ -2,14 +2,14 @@
 
 namespace App\Resources;
 
-class UserResource extends BaseResource
+class PermissionResource extends BaseResource
 {
     public function toArray()
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'email' => $this->email,
+            'description' => $this->description,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

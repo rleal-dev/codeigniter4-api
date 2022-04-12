@@ -2,19 +2,37 @@
 
 namespace App\Services;
 
-use App\Models\Project;
+use App\Repositories\ProjectRepository;
 
 class ProjectService
 {
-    private Project $projectModel;
-
-    public function __construct()
-    {
-        $this->projectModel = new Project;
+    public function __construct(
+        private ProjectRepository $projectRepository = new ProjectRepository
+    ) {
     }
 
     public function findAll()
     {
-        return $this->projectModel->paginate(1);
+        return $this->projectRepository->findAll();
+    }
+
+    public function findOne($id)
+    {
+        return $this->projectRepository->findOne($id);
+    }
+
+    public function create($request)
+    {
+        return $this->projectRepository->create($request);
+    }
+
+    public function update($id, $data)
+    {
+        return $this->projectRepository->update($id, $data);
+    }
+
+    public function delete($id)
+    {
+        return $this->projectRepository->delete($id);
     }
 }

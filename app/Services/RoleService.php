@@ -2,19 +2,37 @@
 
 namespace App\Services;
 
-use App\Models\Role;
+use App\Repositories\RoleRepository;
 
 class RoleService
 {
-    private Role $roleModel;
-
-    public function __construct()
-    {
-        $this->roleModel = new Role;
+    public function __construct(
+        private RoleRepository $roleRepository = new RoleRepository
+    ) {
     }
 
     public function findAll()
     {
-        return $this->roleModel->paginate(1);
+        return $this->roleRepository->findAll();
+    }
+
+    public function findOne($id)
+    {
+        return $this->roleRepository->findOne($id);
+    }
+
+    public function create($request)
+    {
+        return $this->roleRepository->create($request);
+    }
+
+    public function update($id, $data)
+    {
+        return $this->roleRepository->update($id, $data);
+    }
+
+    public function delete($id)
+    {
+        return $this->roleRepository->delete($id);
     }
 }
