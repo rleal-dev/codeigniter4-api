@@ -23,12 +23,12 @@ class ProjectRepository
 
     public function create($request)
     {
-        return $this->projectModel->save($request->getVar());
+        return $this->projectModel->save($request->getPost());
     }
 
     public function update($id, $request)
     {
-        return $this->projectModel->update($id, $request->getVar());
+        return $this->projectModel->update($id, $request->getPost());
     }
 
     public function delete($id)

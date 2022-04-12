@@ -23,12 +23,12 @@ class RoleRepository
 
     public function create($request)
     {
-        return $this->roleModel->save($request->getVar());
+        return $this->roleModel->save($request->getPost());
     }
 
     public function update($id, $request)
     {
-        return $this->roleModel->update($id, $request->getVar());
+        return $this->roleModel->update($id, $request->getPost());
     }
 
     public function delete($id)

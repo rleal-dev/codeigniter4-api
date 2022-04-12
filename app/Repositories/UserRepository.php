@@ -23,12 +23,12 @@ class UserRepository
 
     public function create($request)
     {
-        return $this->userModel->save($request->getVar());
+        return $this->userModel->save($request->getPost());
     }
 
     public function update($id, $request)
     {
-        return $this->userModel->update($id, $request->getVar());
+        return $this->userModel->update($id, $request->getPost());
     }
 
     public function delete($id)
