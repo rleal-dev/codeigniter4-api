@@ -23,12 +23,12 @@ class PermissionRepository
 
     public function create($request)
     {
-        return $this->permissionModel->save($request->getPost());
+        return $this->permissionModel->save($request->getVar());
     }
 
     public function update($id, $request)
     {
-        return $this->permissionModel->update($id, $request->getPost());
+        return $this->permissionModel->update($id, $request->getVar());
     }
 
     public function delete($id)

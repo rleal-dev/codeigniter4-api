@@ -8,6 +8,6 @@ class RegisterService
 {
     public function register($request)
     {
-        return (new UserRepository)->create($request->getPost());
+        return (new UserRepository)->create($request);
     }
 }
